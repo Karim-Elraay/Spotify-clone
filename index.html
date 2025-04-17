@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stream Music Anytime | Free Spotify Clone Web App</title>
+
+    <meta
+      name="description"
+      content="Enjoy seamless music streaming with our Spotify-inspired web app. Create playlists, discover tracks, and vibe out anytime, anywhere."
+    />
+    <meta
+      name="keywords"
+      content="music streaming, spotify clone, free music app, create playlists, web music player"
+    />
+    <!-- Favicon -->
+    <link rel="icon" href="https://open.spotifycdn.com/cdn/images/favicon.0f31d2ea.ico" />
+
+    <!-- Styles & Fonts -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Marhey:wght@300..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- Home -->
+      <div class="home">
+        <div class="logo invert">
+          <img src="images/logo.svg" alt="logo" width="32px" />
+        </div>
+        <div class="icon-container">
+          <div class="home-icon invert">
+            <img src="images/home.svg" alt="home" width="24px" />
+          </div>
+        </div>
+        <div class="search-wrapper">
+          <div class="search-icon invert">
+            <img src="images/search.svg" alt="search" width="24px" title="Search" onclick="focusSearchInput()" />
+          </div>
+          <div class="foldable">
+            <input type="text" name="search" id="searchInput" placeholder="What do you want to play?" />
+            <div class="browse-icon invert hidden">
+              <img src="images/browse.svg" alt="browse" width="24px" title="Browse" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Nav -->
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Premium <img src="images/external-link.svg" alt="link" width="16px" /></a>
+          </li>
+          <li>
+            <a href="/">Support <img src="images/external-link.svg" alt="link" width="16px" /></a>
+          </li>
+          <li>
+            <a href="/">Download <img src="images/external-link.svg" alt="link" width="16px" /></a>
+          </li>
+        </ul>
+        <div class="separator invert"></div>
+        <div class="install">
+          <a href="/" class="install-icon invert">
+            <img src="images/install.svg" alt="install" width="16px" />
+            <p>Install App</p>
+          </a>
+        </div>
+        <div class="account">
+          <div class="sign-up">
+            <a href="/">Sign up</a>
+          </div>
+          <div class="login">
+            <a href="/"><button type="button">Log in</button></a>
+          </div>
+        </div>
+        <div class="menu">
+          <div class="menu-icon">
+            <img id="menuIcon" src="images/menu.svg" alt="menu" width="16px" onclick="menuToggle()" />
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="left">
+        <div>
+          <div class="header">
+            <p>Your Library</p>
+            <button type="button">
+              <img src="images/plus.svg" alt="add" width="16px" />
+            </button>
+          </div>
+        </div>
+        <div class="content scroll-wrapper">
+          <div class="scroll-inner">
+            <div class="create-playlist">
+              <div class="text">
+                <h3>Create your first playlist</h3>
+                <p>It's easy, we'll help you</p>
+              </div>
+              <button type="button">Create playlist</button>
+            </div>
+            <div class="podcasts">
+              <div class="text">
+                <h3>Let's find some podcasts to follow</h3>
+                <p>we'll keep you updated on new episodes</p>
+              </div>
+              <button type="button">Browse podcasts</button>
+            </div>
+            <!-- Custom scrollbar -->
+            <span class="custom-scrollbar">
+              <div class="thumb"></div>
+            </span>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="links">
+            <div class="all-links">
+              <div>
+                <a href="https://www.spotify.com/eg-ar/legal/">
+                  <span>Legal</span>
+                </a>
+              </div>
+              <div>
+                <a href="https://www.spotify.com/eg-ar/safetyandprivacy/">
+                  <span>Safety & Privacy Center</span>
+                </a>
+              </div>
+              <div>
+                <a href="https://www.spotify.com/eg-ar/legal/privacy-policy/">
+                  <span>Privacy Policy</span>
+                </a>
+              </div>
+              <div>
+                <a href="https://www.spotify.com/eg-ar/legal/cookies-policy/">
+                  <span>Cookies</span>
+                </a>
+              </div>
+              <div>
+                <a href="https://www.spotify.com/eg-ar/legal/privacy-policy/#s3">
+                  <span>About Ads</span>
+                </a>
+              </div>
+              <div>
+                <a href="https://www.spotify.com/eg-ar/accessibility/">
+                  <span>Accessibility</span>
+                </a>
+              </div>
+            </div>
+            <a href="https://www.spotify.com/legal/cookies-policy/" target="_blank" rel="noopener">
+              <span>Cookies</span>
+            </a>
+          </div>
+          <div class="language invert">
+            <button type="button"><img src="images/language.svg" alt="language" width="16px" />English</button>
+          </div>
+        </div>
+      </section>
+      <section class="right scroll-wrapper">
+        <div class="scroll-inner">
+          <div class="categories">
+            <section class="category">
+              <div class="header">
+                <h2><a href="/">Trending songs</a></h2>
+                <span><a href="/">Show all</a></span>
+              </div>
+              <div class="cards">
+                <div class="card">
+                  <div class="thumbnail">
+                    <img class="poster" src="https://i.scdn.co/image/ab67616d00001e02bcdd8a03cb3ab4af27904186" alt />
+                    <img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">AURA</a></p>
+                    <span><a href="/">Marwan Pablo</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="	https://i.scdn.co/image/ab67616d00001e02d32922d9e67a4305be66c241"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">MADINA L 2 - مدينة ل اتنين</a></p>
+                    <span><a href="/">Abyusif</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e02761ac1268b5cbeed5f218e40"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">حفلة تنكرية</a></p>
+                    <span><a href="/">Rahma Mohsen</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e02f06308fc357051e3a55c2e5b"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">جيت متأخر</a></p>
+                    <span><a href="/">Ramy Gamal</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="	https://i.scdn.co/image/ab67616d00001e02bf3163d9950cab913dbc535e"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">El Neyya</a></p>
+                    <span><a href="/">Lege-Cy</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e0206b3b8e76373d4569a7f833d"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">الحب عيبنا</a></p>
+                    <span><a href="/">Ramy Sabry</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e025b60d2cf2d60ecc3a0958fb6"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Wa Habibi</a></p>
+                    <span><a href="/">Fairuz</a></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- category Break -->
+            <section class="category rounded-images">
+              <div class="header">
+                <h2><a href="/">Popular artists</a></h2>
+                <span><a href="/">Show all</a></span>
+              </div>
+              <div class="cards">
+                <div class="card">
+                  <div class="thumbnail">
+                    <img class="poster" src="https://i.scdn.co/image/ab67616100005174afd4138e95a69a71b0bdb694" alt />
+                    <img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Essam Sasa</a></p>
+                    <span><a href="/">Artist</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab676161000051740be95f3a807328147536bf67"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Bahaa Sultan</a></p>
+                    <span><a href="/">Artist</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e029c383d244d92e67c0a6c63ed"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Eslam Kabonga</a></p>
+                    <span><a href="/">Artist</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616100005174657b4b05e890595b0c91d99e"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Tamer Ashour</a></p>
+                    <span><a href="/">Artist</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab676161000051748a5d18b749217c6e6605bc6a"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Amr Diab</a></p>
+                    <span><a href="/">Artist</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616100005174699e60132a156c56ec2a2387"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Ramy Sabry</a></p>
+                    <span><a href="/">Artist</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616100005174e18527e77d978c866d00a3b7"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Ahmed Saad</a></p>
+                    <span><a href="/">Artist</a></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- category Break -->
+            <section class="category">
+              <div class="header">
+                <h2><a href="/">Popular albums and singles</a></h2>
+                <span><a href="/">Show all</a></span>
+              </div>
+              <div class="cards">
+                <div class="card">
+                  <div class="thumbnail">
+                    <img class="poster" src="https://i.scdn.co/image/ab67616d00001e0202bbd4aa17fd72d2fc2320b5" alt />
+                    <img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Yaah</a></p>
+                    <span><a href="/">Tamer Ashour</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e02bcdd8a03cb3ab4af27904186"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">EN7RAF</a></p>
+                    <span><a href="/">Marwan Pablo</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e026609642c8f294da97bd0f76b"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">Roma</a></p>
+                    <span><a href="/">Cairokee</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e02078e07be0863c6f5584acc9a"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">El Rwaya</a></p>
+                    <span><a href="/">Tommy Gun</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e0280780c32a91dcffdef4b2cd9"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">كوكتيل غنائي للفنان تووليت حصرياً لحبايب قلبي</a></p>
+                    <span><a href="/">TUL8TE</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="	https://i.scdn.co/image/ab67616d00001e0223d998eba7f6431f786ef2c8"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">صحبي يا صحبي</a></p>
+                    <span><a href="/">Bahaa Sultan</a></span>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="thumbnail">
+                    <img
+                      class="poster"
+                      src="https://i.scdn.co/image/ab67616d00001e02cfa4e906cda39d8f62fe81e3"
+                      alt
+                    /><img class="play-icon" src="images/play.svg" alt="play" width="24px" />
+                  </div>
+                  <div class="info">
+                    <p><a href="/">نساى</a></p>
+                    <span><a href="/">Sherine</a></span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="right-footer">
+            <div class="footer-container">
+              <div class="nav">
+                <div class="lists">
+                  <div class="list">
+                    <ul>
+                      <p>Company</p>
+                      <a href="https://www.spotify.com/eg-ar/about-us/contact/"><span>About</span></a>
+                      <a href="https://www.lifeatspotify.com/"><span>Jobs</span></a>
+                      <a href="https://newsroom.spotify.com/"><span>For the Record</span></a>
+                    </ul>
+                  </div>
+                  <div class="list">
+                    <ul>
+                      <p>Communities</p>
+                      <a href="https://artists.spotify.com/"><span>For Artists</span></a>
+                      <a href="https://developer.spotify.com/"><span>Developers</span></a>
+                      <a href="https://ads.spotify.com/"><span>Advertising</span></a>
+                      <a href="https://investors.spotify.com/"><span>Investors</span></a>
+                      <a href="https://spotifyforvendors.com/"><span>Vendors</span></a>
+                    </ul>
+                  </div>
+                  <div class="list">
+                    <ul>
+                      <p>Useful links</p>
+                      <a href="https://support.spotify.com/"><span>Support</span></a>
+                      <a href="https://www.spotify.com/eg-ar/free/"><span>Free Mobile App</span></a>
+                    </ul>
+                  </div>
+                  <div class="list">
+                    <ul>
+                      <p>Spotify Plans</p>
+                      <a href="https://www.spotify.com/eg-ar/premium/#ref=spotifycom_footer_premium_individual"
+                        ><span>Premium Individual</span></a
+                      >
+                      <a href="https://www.spotify.com/eg-ar/duo/#ref=spotifycom_footer_premium_duo"
+                        ><span>Premium Duo</span></a
+                      >
+                      <a href="https://www.spotify.com/eg-ar/family/#ref=spotifycom_footer_premium_family"
+                        ><span>Premium Family</span></a
+                      >
+                      <a href="https://www.spotify.com/eg-ar/student/#ref=spotifycom_footer_premium_student"
+                        ><span>Premium Student</span></a
+                      >
+                      <a href="https://www.spotify.com/eg-ar/free/#ref=spotifycom_footer_free"
+                        ><span>Spotify Free</span></a
+                      >
+                    </ul>
+                  </div>
+                </div>
+                <div class="social">
+                  <div>
+                    <a
+                      href="https://instagram.com/spotify"
+                      aria-label="Instagram"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img src="images/instagram.svg" alt="" width="16" />
+                    </a>
+                  </div>
+                  <div>
+                    <a
+                      href="https://twitter.com/spotify"
+                      aria-label="Twitter"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img src="images/twitter.svg" alt="" width="16" />
+                    </a>
+                  </div>
+                  <div>
+                    <a
+                      href="https://facebook.com/spotify"
+                      aria-label="Twitter"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <img src="images/facebook.svg" alt="" width="16" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="copyright">
+                <p>© 2025 Spotify AB</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom scrollbar -->
+          <span class="custom-scrollbar">
+            <div class="thumb" id="main-thumb"></div>
+          </span>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
